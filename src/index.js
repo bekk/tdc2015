@@ -3,6 +3,18 @@ var paddleHeight = 120;
 
 document.querySelector('.paddle-left').style.top = 200;
 document.querySelector('.paddle-right').style.top = 200;
+var data = {
+  left: {
+    top: 200
+  },
+  right: {
+    top: 200
+  },
+  ball: {
+    top: 250,
+    left: 400
+  }
+}
 var ball = document.querySelector('.ball');
 ball.style.top = 250;
 ball.style.left = 250;
@@ -10,53 +22,54 @@ ball.style.left = 250;
 
 var goingRight = true;
 window.setInterval(function() {
-  var ball = document.querySelector('.ball');
-  var left = parseInt(ball.style.left, 10);
-  // console.log("1");
+  var left = data.ball.left;
+  var ballTop = data.ball.top;
   if(goingRight){
-    ball.style.left = left + 5;
+    data.ball.left += 5;
     if(left > parseInt(window.innerWidth, 10)-20-20) {
-      var paddle = document.querySelector('.paddle-right');
-      var paddleTop = parseInt(paddle.style.top, 10);
-      var ballTop = parseInt(ball.style.top, 10);
-      if(ballTop < paddleTop + 120 && ballTop > paddleTop) {
+      var paddleTop = data.right.top;
+      if(ballTop < paddleTop + paddleHeight && ballTop > paddleTop) {
         goingRight = false;
       } else {
-        ball.style.left = 250;
+        data.ball.left = 250;
       }
     }
   }
   else {
-    ball.style.left = left - 5;
+    data.ball.left -= 5;
     if (left < 0 + 20) {
-      var paddle = document.querySelector('.paddle-left');
-      var paddleTop = parseInt(paddle.style.top, 10);
-      var ballTop = parseInt(ball.style.top, 10);
-      if(ballTop < paddleTop + 120 && ballTop > paddleTop) {
+      var paddleTop = data.left.top;
+      if(ballTop < paddleTop + paddleHeight && ballTop > paddleTop) {
         goingRight = true;
       } else {
-        ball.style.left = 250;
+        data.ball.left = 250;
       }
     }
   }
+  var ball = document.querySelector('.ball');
+  ball.style.left = data.ball.left;
 }, 10);
 
 
 document.addEventListener("keydown", function(e){
   if(e.which == 87) { //w
+    data.left.top = Math.max(data.left.top -5, 0)
     var paddle = document.querySelector('.paddle-left');
-    paddle.style.top = Math.max(parseInt(paddle.style.top, 10) - 5, 0);
+    paddle.style.top = data.left.top
   }
   else if(e.which == 83) { //s
+    data.left.top = Math.min(data.left.top + 5, maxHeight - paddleHeight);
     var paddle = document.querySelector('.paddle-left');
-    paddle.style.top = Math.min(parseInt(paddle.style.top, 10) + 5, maxHeight - paddleHeight);
+    paddle.style.top = data.left.top
   }
   else if(e.which == 38) { //pil opp
+    data.right.top = Math.max(data.right.top - 5, 0);
     var paddle = document.querySelector('.paddle-right');
-    paddle.style.top = Math.max(parseInt(paddle.style.top, 10) - 5, 0);
+    paddle.style.top = data.right.top;
   }
   else if(e.which == 40) { //pil ned
+    data.right.top = Math.min(data.right.top + 5, maxHeight - paddleHeight);
     var paddle = document.querySelector('.paddle-right');
-    paddle.style.top = Math.min(parseInt(paddle.style.top, 10) + 5, maxHeight - paddleHeight);
+    paddle.style.top = data.right.top;
   }
 });
