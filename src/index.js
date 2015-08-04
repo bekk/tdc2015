@@ -1,18 +1,6 @@
+var data = require("./data");
 var maxHeight = 500;
 var paddleHeight = 120;
-
-var data = {
-  left: {
-    top: 200
-  },
-  right: {
-    top: 200
-  },
-  ball: {
-    top: 200,
-    left: 400
-  }
-}
 var ball = document.querySelector('.ball');
 
 var goingRight = true;

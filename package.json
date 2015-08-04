@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "gulp" : "gulp",
-    "start" : "beefy bundle.js --open",
+    "start" : "python -m http.server",
     "build" : "gulp build",
     "default" : "gulp default",
     "test": "echo \"Error: no test specified\" && exit 2"
