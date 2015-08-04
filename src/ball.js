@@ -39,7 +39,7 @@ module.exports = function(data) {
 
 var moveVertical = function(data, ball) {
   data.ball.top +=  data.ball.verticalSpeed;
-  if(data.ball.top<0 || data.ball.top > data.maxHeight) {
+  if(data.ball.top<0 || data.ball.top > (data.maxHeight-data.ballHeight)) {
     data.ball.verticalSpeed = -1* data.ball.verticalSpeed;
   }
   ball.style.top = data.ball.top;
