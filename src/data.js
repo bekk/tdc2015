@@ -1,4 +1,6 @@
 module.exports = {
+  paddleHeight: 120,
+  maxHeight: 500,
   left: {
     top: 200
   },
