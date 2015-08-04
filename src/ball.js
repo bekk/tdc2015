@@ -50,7 +50,6 @@ var calculateVerticalSpeed = function(data, diff) {
 }
 
 var givePoint = function(data, goingRight) {
-  console.log(goingRight);
   if(goingRight) {
     data.player1 += 1;
   } else {
