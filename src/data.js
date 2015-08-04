@@ -1,4 +1,6 @@
 module.exports = {
+  player1: 0,
+  player2: 0,
   paddleHeight: 120,
   maxHeight: 480,
   left: {

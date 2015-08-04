@@ -15,6 +15,7 @@ module.exports = function(data) {
         } else {
           data.ball.verticalSpeed = 0;
           data.ball.left = 250;
+          givePoint(data, goingRight);
         }
       }
     }
@@ -28,6 +29,7 @@ module.exports = function(data) {
         } else {
           data.ball.verticalSpeed = 0;
           data.ball.left = 250;
+          givePoint(data, goingRight);
         }
       }
     }
@@ -45,4 +47,15 @@ var moveVertical = function(data, ball) {
 
 var calculateVerticalSpeed = function(data, diff) {
   data.ball.verticalSpeed = Math.floor((diff-(data.paddleHeight/2))/10);
+}
+
+var givePoint = function(data, goingRight) {
+  console.log(goingRight);
+  if(goingRight) {
+    data.player1 += 1;
+  } else {
+    data.player2 += 1;
+  }
+  document.querySelector(".player1").textContent = data.player1;
+  document.querySelector(".player2").textContent = data.player2;
 }
