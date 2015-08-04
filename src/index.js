@@ -15,16 +15,29 @@ window.setInterval(function() {
   // console.log("1");
   if(goingRight){
     ball.style.left = left + 5;
+    if(left > parseInt(window.innerWidth, 10)-20-20) {
+      var paddle = document.querySelector('.paddle-right');
+      var paddleTop = parseInt(paddle.style.top, 10);
+      var ballTop = parseInt(ball.style.top, 10);
+      if(ballTop < paddleTop + 120 && ballTop > paddleTop) {
+        goingRight = false;
+      } else {
+        ball.style.left = 250;
+      }
+    }
   }
   else {
     ball.style.left = left - 5;
-  }
-  // console.log(left);
-  if(left > parseInt(window.innerWidth, 10)-20-20) {
-    goingRight = false;
-  }
-  else if (left < 0 + 20) {
-    goingRight = true;
+    if (left < 0 + 20) {
+      var paddle = document.querySelector('.paddle-left');
+      var paddleTop = parseInt(paddle.style.top, 10);
+      var ballTop = parseInt(ball.style.top, 10);
+      if(ballTop < paddleTop + 120 && ballTop > paddleTop) {
+        goingRight = true;
+      } else {
+        ball.style.left = 250;
+      }
+    }
   }
 }, 10);
 
