@@ -9,7 +9,7 @@ module.exports = function(data) {
       data.ball.left += 5;
       if(left > parseInt(window.innerWidth, 10)-20-20) {
         var paddleTop = data.right.top;
-        if(ballTop < paddleTop-15 + data.paddleHeight && ballTop > paddleTop) {
+        if(ballTop < paddleTop + data.paddleHeight && ballTop > paddleTop - 20) {
           goingRight = false;
           calculateVerticalSpeed(data, ballTop-paddleTop);
         } else {
@@ -23,7 +23,7 @@ module.exports = function(data) {
       data.ball.left -= 5;
       if (left < 0 + 20) {
         var paddleTop = data.left.top;
-        if(ballTop < paddleTop-20 + data.paddleHeight && ballTop > paddleTop) {
+        if(ballTop < paddleTop + data.paddleHeight && ballTop > paddleTop - 20) {
           goingRight = true;
           calculateVerticalSpeed(data, ballTop-paddleTop);
         } else {
