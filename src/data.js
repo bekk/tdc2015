@@ -9,6 +9,7 @@ module.exports = {
   },
   ball: {
     top: 200,
-    left: 400
+    left: 400,
+    verticalSpeed: 0
   }
 };
