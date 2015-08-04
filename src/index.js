@@ -1,8 +1,6 @@
 var maxHeight = 500;
 var paddleHeight = 120;
 
-document.querySelector('.paddle-left').style.top = 200;
-document.querySelector('.paddle-right').style.top = 200;
 var data = {
   left: {
     top: 200
@@ -11,14 +9,11 @@ var data = {
     top: 200
   },
   ball: {
-    top: 250,
+    top: 200,
     left: 400
   }
 }
 var ball = document.querySelector('.ball');
-ball.style.top = 250;
-ball.style.left = 250;
-
 
 var goingRight = true;
 window.setInterval(function() {
@@ -46,7 +41,6 @@ window.setInterval(function() {
       }
     }
   }
-  var ball = document.querySelector('.ball');
   ball.style.left = data.ball.left;
 }, 10);
 
