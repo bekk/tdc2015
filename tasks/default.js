@@ -1,2 +1,2 @@
 var gulp = require("gulp");
-module.exports = gulp.series("build", "less");
+module.exports = gulp.series("build", "less", "watch");

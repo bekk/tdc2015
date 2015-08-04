@@ -1,6 +1,6 @@
 var autoprefix = require('gulp-autoprefixer'),
     gulp       = require('gulp'),
-    gulp_less       = require('gulp-less'),
+    gulp_less  = require('gulp-less'),
     sourcemaps = require('gulp-sourcemaps')
 
 module.exports = function less(options) {
