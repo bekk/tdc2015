@@ -8,4 +8,4 @@ gulp.task("build", build );
 gulp.task("less", less );
 gulp.task("watch", watch );
 
-gulp.task("default", gulp.series(build, less, watch));
+gulp.task("default", gulp.series(build, less));
