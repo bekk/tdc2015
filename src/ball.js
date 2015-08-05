@@ -1,7 +1,8 @@
+var intervalId = 0;
 module.exports = function(data) {
   var ball = document.querySelector('.ball');
   var goingRight = true;
-  window.setInterval(function() {
+  intervalId = window.setInterval(function() {
     var left = data.ball.left;
     moveVertical(data, ball);
     var ballTop = data.ball.top;
@@ -57,4 +58,13 @@ var givePoint = function(data, goingRight) {
   }
   document.querySelector(".player1").textContent = data.player1;
   document.querySelector(".player2").textContent = data.player2;
+
+  if(data.player1 + data.player2 >= 2) {
+    clearInterval(intervalId);
+    if(data.player1 > data.player2) {
+      document.querySelector(".player1").classList.add("winner");
+    } else {
+      document.querySelector(".player2").classList.add("winner");
+    }
+  }
 }
