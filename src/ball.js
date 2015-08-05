@@ -33,7 +33,7 @@ var calculateHit = function(data, goingRight) {
     return !goingRight;
   } else {
     data.ball.verticalSpeed = 0;
-    data.ball.left = 250;
+    data.ball.left = window.innerWidth/2;
     givePoint(data, goingRight);
   }
   return goingRight;
