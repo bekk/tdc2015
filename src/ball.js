@@ -59,7 +59,7 @@ var givePoint = function(data, goingRight) {
   document.querySelector(".player1").textContent = data.player1;
   document.querySelector(".player2").textContent = data.player2;
 
-  if(data.player1 + data.player2 >= 2) {
+  if(data.player1 + data.player2 >= 2 && data.player1 !== data.player2) {
     clearInterval(intervalId);
     if(data.player1 > data.player2) {
       document.querySelector(".player1").classList.add("winner");
