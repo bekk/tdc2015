@@ -13,6 +13,7 @@ module.exports = {
   ball: {
     top: 200,
     left: 400,
+    speed: 5,
     verticalSpeed: 0
   }
 };

@@ -6,13 +6,13 @@ module.exports = function(data) {
     var left = data.ball.left;
     moveVertical(data, ball);
     if(goingRight){
-      data.ball.left += 5;
+      data.ball.left += data.ball.speed;
       if(left > parseInt(window.innerWidth, 10)-20-20) {
         goingRight = calculateHit(data, goingRight);
       }
     }
     else {
-      data.ball.left -= 5;
+      data.ball.left -= data.ball.speed;
       if (left < 0 + 20) {
         goingRight = calculateHit(data, goingRight);
       }
@@ -30,9 +30,11 @@ var calculateHit = function(data, goingRight) {
   }
   if(ballTop < paddleTop + data.paddleHeight && ballTop > paddleTop - 20) {
     calculateVerticalSpeed(data, ballTop-paddleTop);
+    increaseSpeed(data);
     return !goingRight;
   } else {
     data.ball.verticalSpeed = 0;
+    data.ball.speed = 5;
     data.ball.left = window.innerWidth/2;
     givePoint(data, goingRight);
   }
@@ -49,6 +51,10 @@ var moveVertical = function(data, ball) {
 
 var calculateVerticalSpeed = function(data, diff) {
   data.ball.verticalSpeed = Math.floor((diff-(data.paddleHeight/2))/10);
+}
+
+var increaseSpeed = function(data) {
+  data.ball.speed += 1;
 }
 
 var givePoint = function(data, goingRight) {
