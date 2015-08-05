@@ -5,38 +5,39 @@ module.exports = function(data) {
   intervalId = window.setInterval(function() {
     var left = data.ball.left;
     moveVertical(data, ball);
-    var ballTop = data.ball.top;
     if(goingRight){
       data.ball.left += 5;
       if(left > parseInt(window.innerWidth, 10)-20-20) {
-        var paddleTop = data.right.top;
-        if(ballTop < paddleTop + data.paddleHeight && ballTop > paddleTop - 20) {
-          goingRight = false;
-          calculateVerticalSpeed(data, ballTop-paddleTop);
-        } else {
-          data.ball.verticalSpeed = 0;
-          data.ball.left = 250;
-          givePoint(data, goingRight);
-        }
+        goingRight = calculateHit(data, goingRight);
       }
     }
     else {
       data.ball.left -= 5;
       if (left < 0 + 20) {
-        var paddleTop = data.left.top;
-        if(ballTop < paddleTop + data.paddleHeight && ballTop > paddleTop - 20) {
-          goingRight = true;
-          calculateVerticalSpeed(data, ballTop-paddleTop);
-        } else {
-          data.ball.verticalSpeed = 0;
-          data.ball.left = 250;
-          givePoint(data, goingRight);
-        }
+        goingRight = calculateHit(data, goingRight);
       }
     }
     ball.style.left = data.ball.left;
   }, 10);
 };
+
+var calculateHit = function(data, goingRight) {
+  var ballTop = data.ball.top;
+  if(goingRight) {
+    var paddleTop = data.right.top;
+  } else {
+    var paddleTop = data.left.top;
+  }
+  if(ballTop < paddleTop + data.paddleHeight && ballTop > paddleTop - 20) {
+    calculateVerticalSpeed(data, ballTop-paddleTop);
+    return !goingRight;
+  } else {
+    data.ball.verticalSpeed = 0;
+    data.ball.left = 250;
+    givePoint(data, goingRight);
+  }
+  return goingRight;
+}
 
 var moveVertical = function(data, ball) {
   data.ball.top +=  data.ball.verticalSpeed;
