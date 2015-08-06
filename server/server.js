@@ -16,12 +16,14 @@ var render = function() {
     return b.score - a.score;
   });
 
-  scores.forEach(function(score){
+  scores.slice(0, 10).forEach(function(score){
     var li = document.createElement("li");
     var scoreSpan = document.createElement("span");
     scoreSpan.textContent = score.score;
+    scoreSpan.classList.add("score");
     var nameSpan = document.createElement("span");
     nameSpan.textContent = score.name;
+    scoreSpan.classList.add("name");
 
     li.appendChild(scoreSpan);
     li.appendChild(nameSpan);
