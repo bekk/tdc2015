@@ -16,9 +16,8 @@ var render = function() {
     return b.score - a.score;
   });
 
-  var li;
   scores.forEach(function(score){
-    li = document.createElement("li");
+    var li = document.createElement("li");
     var scoreSpan = document.createElement("span");
     scoreSpan.textContent = score.score;
     var nameSpan = document.createElement("span");
@@ -26,7 +25,7 @@ var render = function() {
 
     li.appendChild(scoreSpan);
     li.appendChild(nameSpan);
+    scoresElem.appendChild(li);
   });
 
-  scoresElem.appendChild(li);
 }
