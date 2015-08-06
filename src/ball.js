@@ -18,7 +18,6 @@ module.exports = function(initialData) {
         goingRight = calculateHit(data, goingRight);
       }
     }
-    ball.style.left = data.ball.left;
   }, 10);
 };
 
@@ -36,6 +35,7 @@ var calculateHit = function(data, goingRight) {
   } else {
     data.ball.verticalSpeed = 0;
     data.ball.speed = 5;
+    data.ball.top = 200;
     data.ball.left = window.innerWidth/2;
     givePoint(data, goingRight);
   }
@@ -47,7 +47,6 @@ var moveVertical = function(data, ball) {
   if(data.ball.top<0 || data.ball.top > (data.maxHeight-data.ballHeight)) {
     data.ball.verticalSpeed = -1* data.ball.verticalSpeed;
   }
-  ball.style.top = data.ball.top;
 }
 
 var calculateVerticalSpeed = function(data, diff) {
