@@ -1,4 +1,6 @@
 module.exports = {
+  gameLoopId: -1,
+  finished: true,
   player1: 0,
   player2: 0,
   paddleHeight: 120,
