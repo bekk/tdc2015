@@ -1,6 +1,8 @@
 var paddles = require("./paddles")
 var paddlesApi;
-module.exports = function(data) {
+var data = {}
+module.exports = function(initialData) {
+  data = initialData;
   document.removeEventListener("keydown", listenerFunction);
   paddlesApi = paddles(data);
   document.addEventListener("keydown", listenerFunction);
@@ -8,6 +10,7 @@ module.exports = function(data) {
 };
 
 var listenerFunction = function(e){
+  if(data.finished) { return; }
   if(e.which == 87) { //w
     paddlesApi.moveLeftUp();
   }
