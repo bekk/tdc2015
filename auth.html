@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  </head>
+  <body>
+    <form class="auth">
+      <input type="text" class="email"/>
+      <input type="password" class="password"/>
+      <input type="submit"/>
+    </form>
+
+    <script>
+      var auth = function(e) {
+        e.preventDefault();
+        var ref = new Firebase('https://burning-torch-5939.firebaseio.com/');
+        ref.authWithPassword({
+          email    : document.querySelector(".email").value,
+          password : document.querySelector(".password").value
+        }, function(error, authData) {
+          if (error) {
+            console.log("Login Failed!", error);
+          } else {
+            console.log("Authenticated successfully with payload:", authData);
+          }
+        });
+        return false;
+      }
+      document.querySelector(".auth").addEventListener("submit", auth, false);
+    </script>
+  </body>
+</html>
