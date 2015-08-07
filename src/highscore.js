@@ -12,7 +12,8 @@ module.exports = function(initialData) {
 var observerFunctionFinished = function(changes){
   changes.forEach(function(change) {
     if(change.name === "finished" && data.finished){
-      document.querySelector(".paddle").classList.add("blurred");
+      document.querySelector(".paddle-left").classList.add("blurred");
+      document.querySelector(".paddle-right").classList.add("blurred");
       document.querySelector(".ball").classList.add("blurred");
       document.querySelector(".name").classList.remove("hidden");
       document.querySelector(".input").focus();
@@ -23,7 +24,8 @@ var observerFunctionFinished = function(changes){
 
 var formSubmitted = function(e) {
   e.preventDefault();
-  document.querySelector(".paddle").classList.remove("blurred");
+  document.querySelector(".paddle-left").classList.remove("blurred");
+  document.querySelector(".paddle-right").classList.remove("blurred");
   document.querySelector(".ball").classList.remove("blurred");
   document.querySelector(".name").classList.add("hidden");
   var input = document.querySelector(".input");
