@@ -6,12 +6,12 @@ var autoprefix = require('gulp-autoprefixer'),
 
 
 module.exports = function less(options) {
-  var client = gulp.src(__dirname + "/../styles/*.less")
+  var client = gulp.src(__dirname + "/../styles/pong.less")
     .pipe(sourcemaps.init())
     .pipe(gulp_less())
     .pipe(autoprefix({ browsers: ['last 2 versions'] }))
     .pipe(sourcemaps.write({ includeContent: true }))
-    .pipe(gulp.dest(__dirname + "/.."));
+    .pipe(gulp.dest(__dirname + "/../games/pong"));
 
   var server = gulp.src(__dirname + "/../server/*.less")
     .pipe(sourcemaps.init())

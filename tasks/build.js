@@ -4,10 +4,10 @@ var source = require('vinyl-source-stream');
 var merge = require('merge-stream');
 
 module.exports = function build(entry, options) {
-  var client = browserify(__dirname + "/../src/index.js")
+  var client = browserify(__dirname + "/../src/pong/index.js")
  .bundle()
- .pipe(source('bundle.js'))
- .pipe(gulp.dest(__dirname + "/../"));
+ .pipe(source('pong.js'))
+ .pipe(gulp.dest(__dirname + "/../games/pong"));
 
   var server = browserify(__dirname + "/../server/server.js")
  .bundle()
