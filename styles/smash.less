@@ -1,0 +1,34 @@
+@black: #1A1A1A;
+@white: #FFFFFF;
+
+body {
+  background: @black;
+}
+
+.board {
+  position: relative;
+  height: 606px;
+  border: 2px solid red;
+}
+
+.ball {
+  width: 6px;
+  height: 6px;
+  background: @white;
+  position: absolute;
+  top: 600px;
+}
+
+.score {
+  font-size: 10em;
+  margin: 0 auto;
+  display: table;
+  color: @white;
+}
+
+hr {
+  position: relative;
+  top: 597px;
+  background-color: @white;
+  margin: 0;
+}

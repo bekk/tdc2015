@@ -29,5 +29,4 @@ var render = function() {
     li.appendChild(nameSpan);
     scoresElem.appendChild(li);
   });
-
 }
