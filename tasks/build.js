@@ -14,10 +14,10 @@ module.exports = function build(entry, options) {
  .pipe(source('bundle.js'))
  .pipe(gulp.dest(__dirname + "/../server/files/"));
 
- var chart = browserify(__dirname + "/../src/myoClient.js")
-.bundle()
-.pipe(source('chart.js'))
-.pipe(gulp.dest(__dirname + "/../"));
+  var chart = browserify(__dirname + "/../src/myoClient.js")
+  .bundle()
+  .pipe(source('chart.js'))
+  .pipe(gulp.dest(__dirname + "/../"));
 
 
  return merge(client, server, chart);
