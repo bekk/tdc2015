@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Game pong",
   "main": "src/index.js",
+  "html": "smash.html",
   "style": "smash.less",
   "output": "dist/",
   "scripts": {
