@@ -3,3 +3,4 @@ bundle.js
 **/bundle.js
 .DS_Store
 public/apps/*
+npm-debug.log
