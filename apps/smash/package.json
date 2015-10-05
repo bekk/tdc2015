@@ -1,7 +1,7 @@
 {
   "name": "smash",
   "version": "1.0.0",
-  "description": "Game pong",
+  "description": "Smash Game",
   "main": "src/index.js",
   "html": "smash.html",
   "style": "smash.less",
