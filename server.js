@@ -34,7 +34,7 @@ function startServer (apps) {
     if (name === 'load-apps') {
       return reloadApps(function (newApps) {
         apps = newApps;
-        res.end('Apps loaded');
+        return res.end(views.home(apps));
       });
     }
 
