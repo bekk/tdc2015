@@ -5,10 +5,9 @@
   "html": "pong.html",
   "main": "src/index.js",
   "style": "pong.less",
-  "output": "dist/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Magnus Fjell",
   "license": "ISC"
 }

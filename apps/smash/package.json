@@ -5,10 +5,9 @@
   "main": "src/index.js",
   "html": "smash.html",
   "style": "smash.less",
-  "output": "dist/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Magnus Fjell",
   "license": "ISC"
 }
