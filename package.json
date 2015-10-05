@@ -1,29 +1,34 @@
 {
   "name": "tdc2015",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "BEKK Trondheim Arcader",
+  "main": "server.js",
   "scripts": {
     "gulp": "gulp",
-    "start": "python -m http.server",
+    "start": "node server.js",
     "watch": "gulp watch",
     "build": "gulp build",
+    "less": "gulp less",
     "default": "gulp default",
     "test": "echo \"Error: no test specified\" && exit 2"
   },
-  "author": "",
-  "devDependencies": {
+  "author": "BEKK Trondheim",
+  "dependencies": {
     "browserify": "^11.0.1",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-less": "^3.0.3",
     "gulp-minify-css": "^1.2.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.5.2",
+    "vinyl-source-stream": "^1.1.0",
     "merge-stream": "^0.1.8",
+    "through2": "^2.0.0",
     "smoothie": "^1.27.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
-  "dependencies": {
-    "myo": "^2.0.1"
+    "myo": "^2.0.1",
+    "react": "^0.14.0-rc1",
+    "react-dom": "^0.14.0-rc1",
+    "st": "^1.0.0",
+    "vinyl-fs": "^2.1.1"
   }
 }

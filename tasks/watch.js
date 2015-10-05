@@ -1,10 +1,12 @@
 var gulp = require('gulp');
 var build = require("./build");
 var less = require("./less");
+var path = require("path");
 
-module.exports = function watch() {
-    gulp.watch(__dirname + '/../src/**/*.js', build);
-    gulp.watch(__dirname + '/../styles/**/*.less', less);
-    gulp.watch(__dirname + '/../server/**/*.js', build);
-    gulp.watch(__dirname + '/../server/**/*.less', less);
+var js = path.join(__dirname, 'apps', '**', '*.js');
+var css = path.join(__dirname, 'apps', '**', '*.less');
+
+module.exports = function watch(apps) {
+  gulp.watch(js, build.bind(null, apps));
+  gulp.watch(css, less.bind(null, apps));
 };
