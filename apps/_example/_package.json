@@ -1,0 +1,10 @@
+{
+  "name": "smash",
+  "description": "Example game",
+  "main": "src/index.js",
+  "html": "index.html",
+  "style": "myGameStyle.less",
+
+  "author": "My name",
+  "version": "1.0.0"
+}
