@@ -1,0 +1,10 @@
+{
+  "name": "bekk-invaders",
+  "description": "BEKK Invaders Game for BEKK Arcade",
+  "main": "src/game.js",
+  "html": "index.html",
+  "style": "style.less",
+
+  "author": "Mikael Brevik",
+  "version": "1.0.0"
+}
