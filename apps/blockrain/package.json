@@ -1,0 +1,9 @@
+{
+  "name": "blockrain",
+  "description": "Tetris for BEKK Arcade",
+  "main": "src/game.js",
+  "html": "index.html",
+  "style": "blockrain.less",
+  "author": "Jonas Follesø",
+  "version": "1.0.0"
+}
