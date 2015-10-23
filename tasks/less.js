@@ -8,8 +8,7 @@ var autoprefix = require('gulp-autoprefixer'),
 
 var outputRoot = path.join(__dirname, '..', 'public', 'apps');
 
-module.exports = function less (apps, cb) {
-  cb = cb || function () {};
+module.exports = function less (apps) {
   var streams =
     [runTask({
       name: 'base',
@@ -23,7 +22,6 @@ module.exports = function less (apps, cb) {
       .map(runTask));
 
   var merged = merge.apply(null, streams);
-  merged.on('end', cb);
   return merged;
 };
 

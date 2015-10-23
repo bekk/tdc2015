@@ -8,17 +8,19 @@ var appManager = require('./lib/apps');
 
 gulp.task("build", function (cb) {
   appManager.retrieve(function (apps) {
-    build(apps, cb);
+    build(apps);
   });
 });
 gulp.task("less", function (cb) {
   appManager.retrieve(function (apps) {
-    less(apps, cb);
+    less(apps);
+    cb();
   });
 });
 gulp.task("watch", function (cb) {
   appManager.retrieve(function (apps) {
     watch(apps);
+    cb();
   });
 });
 
