@@ -1,4 +1,7 @@
 var $ = require('jquery');
 
-var game = require('./blockrain.jquery.js');
+// Set jQuery on global where it is accessed in the next module
+window.jQuery = $;
+
+require('./blockrain.jquery.js');
 $('.game').blockrain();
