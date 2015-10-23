@@ -90,6 +90,14 @@
       this._board.paused = false;
     },
 
+    rotateLeft: function() {
+      this._board.cur.rotate('left');
+    },
+
+    rotateRight: function() {
+      this._board.cur.rotate('right');
+    },
+
     autoplay: function(enable) {
       if( typeof enable !== 'boolean' ){ enable = true; }
 
@@ -104,7 +112,7 @@
 
     controls: function(enable) {
       if( typeof enable !== 'boolean' ){ enable = true; }
-      this._setupControls(enable);
+      return this._setupControls(enable);
     },
 
     touchControls: function(enable) {
@@ -1511,6 +1519,11 @@
           $(document) .bind('keydown.blockrain', keydown)
                       .bind('keyup.blockrain', keyup);
         }
+      }
+
+      return {
+        keydown: keydown,
+        keyup: keyup
       }
     },
 
