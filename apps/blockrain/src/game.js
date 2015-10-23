@@ -4,4 +4,10 @@ var $ = require('jquery');
 window.jQuery = $;
 
 require('./blockrain.jquery.js');
-$('.game').blockrain();
+
+$('.game').blockrain({
+  autoplay: false,
+  autoplayRestart: false,
+  showFieldOnStart: true,
+  theme: 'vim'
+});
