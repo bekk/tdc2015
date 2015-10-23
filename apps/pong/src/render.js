@@ -19,18 +19,18 @@ module.exports = function(startData){
 
 var renderLeft = function() {
   var paddle = document.querySelector('.paddle-left');
-  paddle.style.top = data.left.top;
+  paddle.style.top = data.left.top + "px";
 }
 
 var renderRight = function() {
   var paddle = document.querySelector('.paddle-right');
-  paddle.style.top = data.right.top;
+  paddle.style.top = data.right.top + "px";
 }
 
 var renderBall = function() {
   var ball = document.querySelector('.ball');
-  ball.style.top = data.ball.top;
-  ball.style.left = data.ball.left;
+  ball.style.top = data.ball.top + "px";
+  ball.style.left = data.ball.left + "px";
 }
 
 var observerFunctionLeft = function(changes){

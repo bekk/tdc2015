@@ -22,11 +22,15 @@ game.initialise(canvas);
 //  Start the game.
 game.start();
 
+Myo.connect();
 Myo.on('paired', onReady);
 
 
 
 function onReady () {
+  Myo.setLockingPolicy("none");
+
+  console.log('Connected Myo');
   myo = Myo.myos[0];
   myo.on('orientation', function (orientationData) {
     var left = orientationFunction(orientationData);
@@ -35,15 +39,17 @@ function onReady () {
 
   // Fire
   myo.on('fist', function () {
+    console.log('Fist made');
     game.keyDown(FIRE_ROCKET);
   });
   // Stop fire
   myo.on('fist_off', function () {
+    console.log('Fist made stop');
     game.keyUp(FIRE_ROCKET);
   });
 };
 
-function orientationFunction(topObj, orientationData){
+function orientationFunction(orientationData){
   var newHeight, offset, orientation;
 
   var half = width / 2;

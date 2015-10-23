@@ -7,7 +7,8 @@ var through = require('through2');
 
 var outputRoot = path.join(__dirname, '..', 'public', 'apps');
 
-module.exports = function build(apps) {
+module.exports = function build(apps, cb) {
+  cb = cb || function () {};
   var streams = apps.filter((app) => !!app.entry).map(function (app) {
     return browserify(path.join(__dirname, '..', 'apps', app.entry))
       .bundle()
@@ -15,5 +16,7 @@ module.exports = function build(apps) {
       .pipe(gulp.dest(outputRoot));
   });
 
-  return merge.apply(null, streams);
+  var merged = merge.apply(null, streams);
+  merged.on('end', cb);
+  return merged;
 };
