@@ -5,12 +5,27 @@ window.jQuery = $;
 
 require('./blockrain.jquery.js');
 
-$('.game').blockrain({
-  autoplay: false,
-  autoplayRestart: false,
-  showFieldOnStart: true,
-  theme: 'vim'
+var playerIsPlaying, timeoutId;
+
+$('.game').click(function() {
+  restartAsPlayer();
 });
+
+$('.game').blockrain({
+  autoplay: true,
+  autoplayRestart: true,
+  theme: 'vim',
+  onGameOver: function(score) {
+    if (playerIsPlaying) {
+      timeoutId = setTimeout(function () {
+        playerIsPlaying = false;
+        $('.game').blockrain('restart');
+        $('.game').blockrain('autoplay', true);
+      }, 5000);
+    }
+  }
+});
+
 // Start the game
 // $game.blockrain('start');
 
@@ -27,6 +42,14 @@ $('.game').blockrain({
 // $game.blockrain('resume');
 
 var controls = $('.game').blockrain('controls');
+
+function restartAsPlayer() {
+  playerIsPlaying = true;
+  clearTimeout(timeoutId);
+  $('.game').blockrain('autoplay', false);
+  $('.game').blockrain('touchControls', false);
+  $('.game').blockrain('restart');
+}
 
 function keydown(code) {
   controls.keydown({
@@ -71,6 +94,3 @@ function rotateLeft() {
   keydown(90);
   keyup(90);
 }
-
-setInterval(function() {
-}, 1000);
