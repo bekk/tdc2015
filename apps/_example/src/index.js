@@ -1,4 +1,4 @@
-var myo = require('myo');
+var Myo = require('@bekk/custom/myo');
 
 /*
   Game implementation here.
