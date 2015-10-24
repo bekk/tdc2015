@@ -4,6 +4,7 @@
   "description": "Chart example",
   "html": "index.html",
   "main": "chart.js",
+  "style": "chart.less",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
