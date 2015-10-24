@@ -1,0 +1,8 @@
+{
+  "name": "@bekk/custom",
+  "description": "Custom libs",
+  "main": "index.js",
+
+  "author": "Mikael Brevik",
+  "version": "1.0.0"
+}

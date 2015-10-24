@@ -9,11 +9,14 @@
     "watch": "gulp watch",
     "build": "gulp build",
     "less": "gulp less",
+    "link": "linklocal link",
+    "postinstall": "npm run link",
     "default": "gulp default",
     "test": "echo \"Error: no test specified\" && exit 2"
   },
   "author": "BEKK Trondheim",
   "dependencies": {
+    "@bekk/custom": "file:lib/custom",
     "browserify": "^11.0.1",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^2.3.1",
@@ -31,5 +34,8 @@
     "through2": "^2.0.0",
     "vinyl-fs": "^2.1.1",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "linklocal": "^2.5.2"
   }
 }

@@ -328,7 +328,7 @@ PlayState.prototype.update = function(game, dt) {
     //  more like a text editor caret.
 
     if (game.newX) {
-        this.ship.x = game.newX;
+        this.ship.x += (this.shipSpeed / 2) * game.newX;
     } else {
         if(game.pressedKeys[37]) {
             this.ship.x -= this.shipSpeed * dt;
