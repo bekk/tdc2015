@@ -43,7 +43,7 @@ function Game() {
         invaderRanks: 5,
         invaderFiles: 10,
         shipSpeed: 120,
-        levelDifficultyMultiplier: 0.2,
+        levelDifficultyMultiplier: 0.8,
         pointsPerInvader: 5
     };
 
