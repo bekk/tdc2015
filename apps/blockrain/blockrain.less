@@ -1,5 +1,7 @@
+@import "../../style/vars/_colors";
+
 .game-container {
-  background-color: #000;
+  background-color: @background-body;
 }
 
 .game {
@@ -11,7 +13,7 @@
   position: relative;
   padding: 0;
   margin: 0;
-  color: #ffffff;
+  color: @color-lightGray;
   font-size: 18px;
   line-height: 140%;
 }
@@ -85,9 +87,9 @@
   position: relative;
   display: inline-block;
   background: none;
-  color: #ffffff;
+  color: @color-lightGray;
   text-decoration: none;
-  border: 2px solid #ffffff;
+  border: 2px solid @color-lightGray;
   padding: 15px 30px;
   font-size: 18px;
   text-align: center;
@@ -100,7 +102,7 @@
   left: 0px;
   bottom: 0px;
   right: 0px;
-  border: 2px solid #ffffff;
+  border: 2px solid @color-lightGray;
   border-top: none;
   border-right: none;
   transition: all 0.2s ease;
@@ -112,7 +114,7 @@
   left: 100%;
   bottom: 0px;
   right: 0px;
-  border: 2px solid #ffffff;
+  border: 2px solid @color-lightGray;
   border-left: none;
   border-bottom: none;
   transition: all 0.2s ease;
@@ -139,7 +141,7 @@
 
 .blockrain-score-msg {
   font-family: monospace;
-  color: #C2FFAE;
+  color: @color-lightGray;
   font-size: 20px;
   line-height: 100%;
   margin-bottom: 0.2em;
@@ -147,7 +149,7 @@
 
 .blockrain-score-num {
   font-family: monospace;
-  color: #C2FFAE;
+  color: @color-lightGray;
   font-size: 25px;
   font-weight: bold;
 }

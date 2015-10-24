@@ -16,7 +16,7 @@ $('.game').click(function() {
 $('.game').blockrain({
   autoplay: true,
   autoplayRestart: true,
-  theme: 'vim',
+  theme: 'bekk',
   onGameOver: function(score) {
     if (playerIsPlaying) {
       timeoutId = setTimeout(function () {
