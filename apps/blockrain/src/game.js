@@ -1,4 +1,6 @@
 var $ = require('jquery');
+var Myo = require('@bekk/custom/myo');
+var Bacon = require('baconjs');
 
 // Set jQuery on global where it is accessed in the next module
 window.jQuery = $;
@@ -42,6 +44,60 @@ $('.game').blockrain({
 // $game.blockrain('resume');
 
 var controls = $('.game').blockrain('controls');
+
+Myo.connect();
+Myo.on('paired', onReady);
+
+Myo.on('snap', function(){
+  console.log('Reset orientation');
+	this.zeroOrientation();
+});
+
+Myo.on('wave_out', function(pose_name){
+  console.log('Wave In made');
+  restartAsPlayer();
+});
+
+var vectors = Bacon.fromEvent(Myo, 'vector');
+
+var is = c => v => v === c;
+
+var horizontal = vectors.map(v => getHorizontal(v.x)).debounceImmediate(100);
+horizontal.filter(is('left')).onValue(left);
+horizontal.filter(is('right')).onValue(right);
+
+var vertical = vectors.map(v => getVertical(v.y)).debounceImmediate(200);
+vertical.filter(is('down')).onValue(down);
+
+Bacon.fromEvent(Myo, 'fist').debounceImmediate(300).log().onValue(rotateRight);
+
+function onReady () {
+  console.log('Connected Myo');
+  Myo.setLockingPolicy("none");
+};
+
+var threshold = .3;
+var thresholdHorizontal = .2;
+
+function getVertical (y) {
+  if (y > threshold) {
+    return 'up';
+  }
+  if (y < -threshold) {
+    return 'down';
+  }
+  return 'center';
+}
+
+function getHorizontal (x) {
+  if (x < -thresholdHorizontal) {
+    return 'left';
+  }
+  if (x > thresholdHorizontal) {
+    return 'right';
+  }
+  return 'center';
+}
 
 function restartAsPlayer() {
   playerIsPlaying = true;
