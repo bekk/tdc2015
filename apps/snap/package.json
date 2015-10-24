@@ -1,0 +1,10 @@
+{
+  "name": "Snap",
+  "description": "Snap helper",
+  "main": "src/index.js",
+  "html": "snap.html",
+  "style": "snap.less",
+
+  "author": "Mikael Brevik",
+  "version": "1.0.0"
+}
