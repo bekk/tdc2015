@@ -3,8 +3,8 @@ var score = require("./score");
 var paddles = require("./paddlesMyo");
 var ball = require("./ball");
 var render = require("./render");
-var highscore = require("./highscore");
-var Myo = require("myo");
+// var highscore = require("./highscore");
+var Myo = require('@bekk/custom/myo');
 
 Myo.connect();
 var dataClone = JSON.parse(JSON.stringify(data));
@@ -16,7 +16,7 @@ var myo2;
 
 Myo.on("paired", function(){
   if(Myo.myos.length < 2 ) { return; }
-  console.log('Starting game');
+  console.log('Paired two devices');
 
   Myo.setLockingPolicy("none");
 
@@ -30,6 +30,7 @@ Myo.on("paired", function(){
 });
 
 var start = function() {
+  console.log('Tryig to start game');
   if(!myo1ready || !myo2ready) { return; }
   console.log('Starting game');
   if(dataClone.finished) {

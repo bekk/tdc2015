@@ -1,4 +1,4 @@
-var Myo = require("myo");
+var Myo = require('@bekk/custom/myo');
 var data = {};
 var myo1;
 var myo2;
@@ -7,10 +7,10 @@ module.exports = function(initialData) {
   data = initialData;
   myo1 = Myo.myos[0];
   myo2 = Myo.myos[1];
-  myo1.off("orientation")
-  myo2.off("orientation")
-  myo1.on("orientation", orientationFunction.bind(undefined, data.left));
-  myo2.on("orientation", orientationFunction.bind(undefined, data.right));
+  myo1.off("vector")
+  myo2.off("vector")
+  myo1.on("vector", orientationFunction.bind(undefined, data.left));
+  myo2.on("vector", orientationFunction.bind(undefined, data.right));
 };
 
 var orientationFunction = function(topObj, orientationData){
