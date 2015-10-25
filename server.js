@@ -55,11 +55,13 @@ function startServer (apps) {
 reloadApps(startServer);
 
 function reloadApps (cb) {
-  return appManager.retrieve(function (newApps) {
-    console.log('Building apps:', newApps);
-    merge(
-      build(newApps),
-      less(newApps)
-    ).pipe(through.obj(null, cb.bind(null, newApps)));
-  });
+  return merge(build(), less()).pipe(through.obj(function (file, enc, done) {
+    this.push(file);
+    done();
+  }, function () {
+    appManager.retrieveBuffered(function (newApps) {
+      console.log('Building apps:', newApps);
+      cb(newApps);
+    })
+  }));
 }

@@ -8,6 +8,7 @@ var cursorSize = 30;
 
 const FIRE_ROCKET = 32;
 
+
 //  Setup the canvas.
 var canvas = document.getElementById('gameCanvas');
 canvas.width = width;

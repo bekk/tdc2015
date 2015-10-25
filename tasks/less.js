@@ -4,25 +4,27 @@ var autoprefix = require('gulp-autoprefixer'),
     gulp_less  = require('gulp-less'),
     rename     = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps'),
-    merge = require('merge-stream');
+    merge      = require('merge-stream'),
+    through    = require('through2'),
+    appManager = require('../lib/apps');
 
 var outputRoot = path.join(__dirname, '..', 'public', 'apps');
 
-module.exports = function less (apps) {
-  var streams =
-    [runTask({
-      name: 'base',
-      entryStyle: path.join(__dirname, '..', 'style', 'base.less')
-    })].concat(apps
-      .filter((app) => !!app.entryStyle)
-      .map((app) => ({
-        name: app.name,
-        entryStyle: path.join(__dirname, '..', 'apps', app.entryStyle)
-      }))
-      .map(runTask));
-
-  var merged = merge.apply(null, streams);
-  return merged;
+module.exports = function less () {
+  runTask({
+    name: 'base',
+    entryStyle: path.join(__dirname, '..', 'style', 'base.less')
+  });
+  return appManager.retrieve().pipe(through.obj(function(app, enc, done){
+    if (!app.entryStyle) {
+      return done();
+    }
+    this.push(runTask({
+      name: app.name,
+      entryStyle: path.join(__dirname, '..', 'apps', app.entryStyle)
+    }));
+    done();
+  }));
 };
 
 function runTask (app) {
