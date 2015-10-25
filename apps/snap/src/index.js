@@ -10,3 +10,6 @@ Bacon.fromEvent(Myo, 'snap')
    .onValue(() => audio.play());
 
 Myo.connect();
+Myo.on('paired', function () {
+  Myo.setLockingPolicy("none");
+});
