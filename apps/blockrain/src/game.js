@@ -48,7 +48,7 @@ var controls = $('.game').blockrain('controls');
 Myo.connect();
 Myo.on('paired', onReady);
 
-Myo.on('snap', function(){
+Myo.on('double_tap', function() {
   console.log('Reset orientation');
 	this.zeroOrientation();
 });
@@ -62,32 +62,32 @@ var vectors = Bacon.fromEvent(Myo, 'vector');
 
 var is = c => v => v === c;
 
-var horizontal = vectors.map(v => getHorizontal(v.x)).debounceImmediate(100);
+var horizontal = vectors.map(v => getHorizontal(v.x)).debounceImmediate(200);
 horizontal.filter(is('left')).onValue(left);
 horizontal.filter(is('right')).onValue(right);
-
-var vertical = vectors.map(v => getVertical(v.y)).debounceImmediate(200);
-vertical.filter(is('down')).onValue(down);
-
-Bacon.fromEvent(Myo, 'fist').debounceImmediate(300).log().onValue(rotateRight);
 
 function onReady () {
   console.log('Connected Myo');
   Myo.setLockingPolicy("none");
 };
 
-var threshold = .3;
-var thresholdHorizontal = .2;
+// var upIsActive = false;
+Myo.on('fist', function () {
+  console.log('Fist made');
+  rotateRight();
+});
+//
+// Myo.on('fist_off', function () {
+//   upIsActive = false;
+// });
+//
+// setTimeout(function () {
+//   if (upIsActive && playerIsPlaying) {
+//     rotateRight();
+//   }
+// }, 200);
 
-function getVertical (y) {
-  if (y > threshold) {
-    return 'up';
-  }
-  if (y < -threshold) {
-    return 'down';
-  }
-  return 'center';
-}
+var thresholdHorizontal = .2;
 
 function getHorizontal (x) {
   if (x < -thresholdHorizontal) {

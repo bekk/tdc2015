@@ -44,7 +44,7 @@ Myo.on('vector', function (v) {
   game.setX(v.x);
 });
 
-Myo.on('snap', function(){
+Myo.on('double_tap', function(){
   console.log('Reset orientation');
 	this.zeroOrientation();
 });

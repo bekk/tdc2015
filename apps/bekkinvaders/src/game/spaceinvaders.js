@@ -511,11 +511,11 @@ PlayState.prototype.draw = function(game, dt, ctx) {
     ctx.clearRect(0, 0, game.width, game.height);
 
     //  Draw ship.
-    ctx.fillStyle = '#999999';
+    ctx.fillStyle = '#ebebeb';
     ctx.fillRect(this.ship.x - (this.ship.width / 2), this.ship.y - (this.ship.height / 2), this.ship.width, this.ship.height);
 
     //  Draw invaders.
-    ctx.fillStyle = '#006600';
+    ctx.fillStyle = '#df565b';
     for(var i=0; i<this.invaders.length; i++) {
         var invader = this.invaders[i];
         ctx.fillRect(invader.x - invader.width/2, invader.y - invader.height/2, invader.width, invader.height);
