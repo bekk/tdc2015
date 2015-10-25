@@ -1,10 +1,10 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
-var merge = require('merge-stream');
 var path = require('path');
-var through = require('through2');
 var appManager = require('../lib/apps');
+var onEnd = require('./utils').onEnd;
+var through = require('through2');
 
 var outputRoot = path.join(__dirname, '..', 'public', 'apps');
 
@@ -13,10 +13,12 @@ module.exports = function () {
     if (!app.entry) {
       return callback();
     }
-    this.push(browserify(path.join(__dirname, '..', 'apps', app.entry))
+    var stream = browserify(path.join(__dirname, '..', 'apps', app.entry))
         .bundle()
         .pipe(source(app.name + '.bundle.js'))
-        .pipe(gulp.dest(outputRoot)));
-    callback();
+        .pipe(gulp.dest(outputRoot))
+        .pipe(onEnd(callback));
+
+    this.emit(stream);
   }))
 };

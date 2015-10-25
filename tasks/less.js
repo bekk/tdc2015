@@ -6,6 +6,7 @@ var autoprefix = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     merge      = require('merge-stream'),
     through    = require('through2'),
+    enEnd      = require('./utils').onEnd,
     appManager = require('../lib/apps');
 
 var outputRoot = path.join(__dirname, '..', 'public', 'apps');
@@ -19,11 +20,13 @@ module.exports = function less () {
     if (!app.entryStyle) {
       return done();
     }
-    this.push(runTask({
+    var stream = runTask({
       name: app.name,
       entryStyle: path.join(__dirname, '..', 'apps', app.entryStyle)
-    }));
-    done();
+    });
+
+    this.emit(stream);
+    stream.pipe(enEnd(done));
   }));
 };
 
