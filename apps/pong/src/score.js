@@ -22,8 +22,10 @@ var updateScore = function(data) {
   document.querySelector(".player2").textContent = data.player2;
 }
 
+var numberOfRounds = 10;
+
 var checkGameFinished = function(data) {
-  if(data.player1 + data.player2 >= 2 && data.player1 !== data.player2) {
+  if(data.player1 + data.player2 > numberOfRounds && data.player1 !== data.player2) {
     clearInterval(data.gameLoopId);
     data.finished = true;
     if(data.player1 > data.player2) {
