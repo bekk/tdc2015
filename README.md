@@ -37,7 +37,7 @@ med tommel og pekefinger (`double_tap`).
 ## Bidra og kjør lokalt
 
 En kan selv bidra med spill eller apps til TV-boardet til BEKK. Send en Pull
-Request som følger [eksemplet](./apps/example) og i det den blir accepted vil
+Request som følger [eksemplet](./apps/_example) og i det den blir accepted vil
 spillet dukke opp på dashboardet.
 
 For å kjøre løsningen lokalt, må man følge 2 enkle steg:
